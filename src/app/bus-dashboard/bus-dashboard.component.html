@@ -1,0 +1,96 @@
+<!-- Header Section -->
+<header class="dashboard-header">
+  <div class="logo-container" routerLink="/">
+    <img src="https://ultrabus.es/wp-content/uploads/2024/06/LOGO-ULTRABUS.webp" alt="Ultrabus Logo" class="logo">
+  </div>
+
+  <div class="date-picker">
+    <button type="button" class="date-nav" (click)="previousDay()">
+      <i class="material-icons">chevron_left</i>
+    </button>
+    <div class="date-display" (click)="openDatePicker()">
+      <span class="date">{{ currentDate | date:'d MMMM yyyy' }}</span>
+      <i class="material-icons">calendar_today</i>
+    </div>
+    <input
+      #datePicker
+      type="date"
+      class="date-input"
+      [value]="currentDate | date:'yyyy-MM-dd'"
+      (change)="onDateChange($event)"
+      style="display: none;"
+    >
+    <button type="button" class="date-nav" (click)="nextDay()">
+      <i class="material-icons">chevron_right</i>
+    </button>
+  </div>
+
+  <div class="header-actions">
+    <button class="print-button" (click)="printPage()">
+      <i class="material-icons">print</i>
+      <span>Imprimir</span>
+    </button>
+  </div>
+</header>
+
+<!-- Main Content -->
+<div class="game-container">
+  <!-- Pending Services Column -->
+  <div class="pending-column" #pendingColumn (drop)="onDrop($event, undefined)"
+     (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)">
+  <h2>Servicios</h2>
+  <ng-container *ngFor="let card of getPendingCards()">
+    <div class="card" [attr.data-service-id]="card.id" draggable="true"
+         (dragstart)="onDragStart($event, card)" (dragend)="onDragEnd($event)"
+         (click)="onCardClick(card)" [class.expanded]="card.expanded">
+      <div class="card-content">
+        <div class="card-header">
+          <div>{{ card.origen }} → {{ card.destino }}</div>
+          <div class="service-type">{{ card.tipo_servicio }}</div>
+        </div>
+        <div class="card-details">
+          <div class="card-detail">
+            <span class="detail-label">Time</span>
+            <span class="detail-value">{{ card.hora_salida }} - {{ card.hora_llegada }}</span>
+          </div>
+          <div class="card-detail">
+            <span class="detail-label">Passengers</span>
+            <span class="detail-value">{{ card.num_pasajeros }}</span>
+          </div>
+        </div>
+        <div class="observations">{{ card.observaciones }}</div>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+  <!-- Driver Grid Container -->
+  <div class="grid-container">
+    <div *ngFor="let driver of drivers" class="drop-zone" [attr.data-driver-id]="driver.id" (drop)="onDrop($event, driver.id)" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)" #dropZone>
+      <h2>{{ driver.name }}</h2>
+      <ng-container *ngFor="let card of getDriverCards(driver.id)">
+        <div class="card" [attr.data-service-id]="card.id" draggable="true"
+             (dragstart)="onDragStart($event, card)" (dragend)="onDragEnd($event)" (click)="onCardClick(card)"
+             [class.expanded]="card.expanded">
+          <div class="card-content">
+            <div class="card-header">
+              <div>{{ card.origen }} → {{ card.destino }}</div>
+              <div class="service-type">{{ card.tipo_servicio }}</div>
+            </div>
+            <div class="card-details">
+              <div class="card-detail">
+                <span class="detail-label">Time</span>
+                <span class="detail-value">{{ card.hora_salida }} - {{ card.hora_llegada }}</span>
+              </div>
+              <div class="card-detail">
+                <span class="detail-label">Passengers</span>
+                <span class="detail-value">{{ card.num_pasajeros }}</span>
+              </div>
+            </div>
+            <div class="observations">{{ card.observaciones }}</div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
