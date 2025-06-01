@@ -45,20 +45,20 @@
          (click)="onCardClick(card)" [class.expanded]="card.expanded">
       <div class="card-content">
         <div class="card-header">
-          <div>{{ card.origen }} → {{ card.destino }}</div>
-          <div class="service-type">{{ card.tipo_servicio }}</div>
+          <div>{{ card.origin }} → {{ card.destination }}</div>
+          <div class="service-type">{{ card.serviceType }}</div>
         </div>
         <div class="card-details">
           <div class="card-detail">
-            <span class="detail-label">Time</span>
-            <span class="detail-value">{{ card.hora_salida }} - {{ card.hora_llegada }}</span>
+            <span class="detail-label">Horario</span>
+            <span class="detail-value">{{ card.departureTime }} - {{ card.arrivalTime }}</span>
           </div>
           <div class="card-detail">
-            <span class="detail-label">Passengers</span>
-            <span class="detail-value">{{ card.num_pasajeros }}</span>
+            <span class="detail-label">Pasajeros</span>
+            <span class="detail-value">{{ card.passengerCount }}</span>
           </div>
         </div>
-        <div class="observations">{{ card.observaciones }}</div>
+        <div class="observations">{{ card.notes }}</div>
       </div>
     </div>
   </ng-container>
@@ -74,20 +74,20 @@
              [class.expanded]="card.expanded">
           <div class="card-content">
             <div class="card-header">
-              <div>{{ card.origen }} → {{ card.destino }}</div>
-              <div class="service-type">{{ card.tipo_servicio }}</div>
+              <div>{{ card.origin }} → {{ card.destination }}</div>
+              <div class="service-type">{{ card.serviceType }}</div>
             </div>
             <div class="card-details">
               <div class="card-detail">
-                <span class="detail-label">Time</span>
-                <span class="detail-value">{{ card.hora_salida }} - {{ card.hora_llegada }}</span>
+                <span class="detail-label">Horario</span>
+                <span class="detail-value">{{ card.departureTime }} - {{ card.arrivalTime }}</span>
               </div>
               <div class="card-detail">
-                <span class="detail-label">Passengers</span>
-                <span class="detail-value">{{ card.num_pasajeros }}</span>
+                <span class="detail-label">Pasajeros</span>
+                <span class="detail-value">{{ card.passengerCount }}</span>
               </div>
             </div>
-            <div class="observations">{{ card.observaciones }}</div>
+            <div class="observations">{{ card.notes }}</div>
           </div>
         </div>
       </ng-container>
