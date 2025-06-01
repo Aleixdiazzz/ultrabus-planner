@@ -1,6 +1,6 @@
 // bus-service-management.component.ts
 import { Component, ViewChild, ElementRef, LOCALE_ID, Inject, OnInit } from '@angular/core';
-import {DatePipe, NgOptimizedImage, registerLocaleData} from '@angular/common';
+import {DatePipe, registerLocaleData} from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import { NgForOf } from '@angular/common';
 import { RouterLink } from '@angular/router';
@@ -17,8 +17,7 @@ registerLocaleData(localeEs);
   imports: [
     NgForOf,
     DatePipe,
-    RouterLink,
-    NgOptimizedImage
+    RouterLink
   ],
   styleUrls: ['./bus-dashboard.component.css'],
   providers: [
