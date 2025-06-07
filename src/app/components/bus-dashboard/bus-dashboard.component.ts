@@ -4,8 +4,8 @@ import {DatePipe, registerLocaleData} from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import { NgForOf } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { ServiceCard } from '../Models/ServiceCard';
-import { Driver } from '../Models/Driver';
+import {ServiceCard} from '../../Models/ServiceCard';
+import { Driver } from '../../Models/Driver';
 
 // Register Spanish locale data
 registerLocaleData(localeEs);

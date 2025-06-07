@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { BusDashboardComponent } from './bus-dashboard/bus-dashboard.component';
-import { LandingComponent } from './landing/landing.component';
+import { BusDashboardComponent } from './components/bus-dashboard/bus-dashboard.component';
+import { LandingComponent } from './components/landing/landing.component';
 
 export const routes: Routes = [
   { path: '', component: LandingComponent },
